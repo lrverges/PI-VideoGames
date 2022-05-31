@@ -26,7 +26,7 @@ const uploadGenres = require('./src/functions/uploadGenres.js');
 conn.sync({ force: true }).then(() => {
   server.listen(PORT, () => {
     console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console
-    uploadGenres();
-
+    
+    uploadGenres(); //carga los genres
   });
 }); 

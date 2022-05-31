@@ -1,5 +1,5 @@
 const router = require ('express').Router();
-const { Videogame } = require ('../db')
+const { Videogame, Genre } = require ('../db')
 
 router.get("/:idVideogame", (req, res, next)=>{
     //Obtener el detalle de un videojuego en particular
@@ -17,7 +17,7 @@ router.get("/:idVideogame", (req, res, next)=>{
 router.post('/', async (req, res, next)=>{
     //Recibe los datos recolectados desde el formulario controlado de la ruta de creación de videojuego por body
     //Crea un videojuego en la base de datos
-    const {name, description, rating, released, platforms, image_background} = req.body
+    const {name, description, rating, released, platforms, image_background, genres} = req.body
     try {
         const newVideogame = await Videogame.create({
             name,
@@ -25,10 +25,16 @@ router.post('/', async (req, res, next)=>{
             rating,
             platforms,
             released,
-            image_background
+            image_background,
+        })
+        //await Videogame.addGenres(genres);
+        
+        genres.forEach(async (genreId) => {
+            let genresGame = await Genre.findOne({ where: { id: genreId } })
+            
+           await newVideogame.addGenre(genresGame)
         })
         res.json(newVideogame)
-        
         
     } catch (error) {
         next(error)
