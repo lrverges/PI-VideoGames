@@ -1,13 +1,44 @@
 const router = require ('express').Router();
+const { default: axios } = require('axios');
 const { Videogame, Genre } = require ('../db')
+const { API_KEY } = process.env;
 
-router.get("/:idVideogame", (req, res, next)=>{
+function responseElement(respuesta){
+    return{
+        id: respuesta.id,
+        name: respuesta.name,
+        description: respuesta.description,
+        released: respuesta.released,
+        rating: respuesta.rating,
+        platforms: respuesta.platforms.map(element => element.platform.name),
+        genres: respuesta.genres.map(element =>  element.name),
+        image_background: respuesta.background_image,
+    }
+}
+
+
+router.get("/:idVideogame", async (req, res, next)=>{
     //Obtener el detalle de un videojuego en particular
     //Debe traer solo los datos pedidos en la ruta de detalle de videojuego
     //Incluir los géneros asociados
+    const id = req.params.idVideogame
+    let game
     try {
-        
-        res.send(`soy un get con el id ${req.params.idVideogame}`)
+        if(id.toString().length<10)
+             {
+                const response = await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
+                const respuesta = response.data;
+                    game = responseElement(respuesta)
+                    //res.json(game)
+            }
+            else {
+                game = await Videogame.findByPk(id, {
+                    include: Genre,
+                });
+               
+            }   
+            res.json(game)
+            
     } catch (error) {
         next(error)
     }
@@ -26,12 +57,9 @@ router.post('/', async (req, res, next)=>{
             platforms,
             released,
             image_background,
-        })
-        //await Videogame.addGenres(genres);
-        
-        genres.forEach(async (genreId) => {
-            let genresGame = await Genre.findOne({ where: { id: genreId } })
-            
+        })  
+        genres.forEach(async (genre) => {
+            let genresGame = await Genre.findOne({ where: { name: genre } })  
            await newVideogame.addGenre(genresGame)
         })
         res.json(newVideogame)
