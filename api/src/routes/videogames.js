@@ -13,7 +13,7 @@ function selectColumns(game) {
     name: game.name,
     //description: game.description,
     //released: game.released,
-    //rating: game.rating,
+    rating: game.rating,
     // platforms: game.platforms.map((element) => {
     //   return element.platform.name;
     // }),

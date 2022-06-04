@@ -1,0 +1,21 @@
+
+.container {
+	
+	border: 1px solid rgba(45, 0, 75, 0.489);
+	border-radius: 10px;
+	width: 300px;
+	height: 250px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+}
+
+.imgVideogame {
+	width: 100px;
+	height: 24vh;
+	width: 300px;
+	overflow: hidden;
+	border-radius: 10px;
+}

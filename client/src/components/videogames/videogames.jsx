@@ -1,22 +1,23 @@
 import { useEffect } from "react"
 import {useDispatch, useSelector} from "react-redux"
-import {getAllVideogames} from '../store/actions'
-import Videogame from "./videogame"
+import {getAllVideogames} from '../../store/actions'
+import Videogame from "../videogame/videogame"
+import React from "react"
 
 export default function Videogames(){
-    let videogames = useSelector(state => state.videogames) //traigo parte del state
+    let videogames = useSelector(state => state.filteredVideogames) //traigo parte del state
     let dispatch = useDispatch() // para despachar al store
     useEffect(()=>{                 //ejecuta la funcion cuando comienza o actualiza el ciclo de vida del componente
         dispatch(getAllVideogames())
-    }, [])
-   // console.log(videogames)
-    return (
-        <div>
-        {videogames.length>0 ? videogames.map((video)=>{
-            console.log(video.name)
+    }, [dispatch])
+  
+    return ( <>
+     
+        {videogames.length>0 ? videogames.map((videogame)=>{
+       
             return <Videogame 
-                data={video}
-                // key={video.id}
+                datos={videogame}
+                 key={videogame.id}
                 // name={video.name} 
                 // image={video.image_background} 
                 // genres={video.genres}
@@ -24,6 +25,7 @@ export default function Videogames(){
             
         }): <div>cargando</div>
     }
-        </div>
+        {/* </div> */}
+        </>
     );
 }
