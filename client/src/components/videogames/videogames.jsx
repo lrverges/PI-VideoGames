@@ -1,6 +1,8 @@
 import { useEffect } from "react"
 import {useDispatch, useSelector} from "react-redux"
 import {getAllVideogames} from '../../store/actions'
+import Order from "../order/order"
+import Searchbar from "../searchbar/searchbar"
 import Videogame from "../videogame/videogame"
 import React from "react"
 
@@ -12,7 +14,9 @@ export default function Videogames(){
     }, [dispatch])
   
     return ( <>
-     
+        
+        <Order/>
+        <Searchbar/>
         {videogames.length>0 ? videogames.map((videogame)=>{
        
             return <Videogame 
@@ -27,5 +31,6 @@ export default function Videogames(){
     }
         {/* </div> */}
         </>
+
     );
 }
