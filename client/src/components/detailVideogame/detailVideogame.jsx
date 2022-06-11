@@ -6,17 +6,17 @@ const url = 'http://localhost:3001';
 
 export default function DetailVideogame(){
 
-    const [videogame, setvideogame] = useState(null)
+    const [videogame, setVideogame] = useState(null)
     let {id} = useParams()
     useEffect(()=>{
         
         axios.get(`${url}/videogame/${id}`)
         .then((response)=>{
-            setvideogame(response.data)
+            setVideogame(response.data)
 
         })
-       
-    },[])
+       return ()=>{setVideogame(null)}
+    },[id])
     return <div>
         {videogame? <div>
         <div>{videogame.name}</div> 

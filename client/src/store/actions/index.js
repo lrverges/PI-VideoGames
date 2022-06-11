@@ -6,6 +6,7 @@ const url = 'http://localhost:3001';
 //http://localhost:3001/videogames
 
 
+
 export function getAllVideogames(){
     return function (dispatch){
         axios.get(`${url}/videogames`)
@@ -43,5 +44,5 @@ export function sort(order){
         type: SORT,
         payload: order
     }
-}
 
+}

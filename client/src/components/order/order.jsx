@@ -13,6 +13,7 @@ export default function Order(){
     <>
         <span>Ordenar por </span>
         <select name="selectOrder" onChange={onSelectChange}>
+                    <option value={''}>Ordenar</option>
                     <option value={ASCENDINGNAME}>Nombre A-Z</option>
                     <option value={DESCENDINGNAME}>Nombre Z-A</option>
                     <option value={ASCENDINGRATING}>Rating Ascendente</option>

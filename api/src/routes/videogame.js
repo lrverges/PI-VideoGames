@@ -60,7 +60,7 @@ router.post('/', async (req, res, next)=>{
         })  
         genres.forEach(async (genre) => {
             let genresGame = await Genre.findOne({ where: { name: genre } })  
-           await newVideogame.addGenre(genresGame)
+            newVideogame.addGenre(genresGame)
         })
         res.json(newVideogame)
         

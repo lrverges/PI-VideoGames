@@ -32,7 +32,7 @@ router.get("/", (req, res, next) => {
   const { name } = req.query;
   let condition = {};
   let searchName = "";
-  let pages = 3
+  let pages = 4
   condition.include = [
     {
       model: Genre,
@@ -43,14 +43,14 @@ router.get("/", (req, res, next) => {
   if (name) {
     condition.where = { name: { [Op.iLike]: `%${name}%` } };
     searchName = `search=${name}&`;
-    pages = 1
+    pages = 4
   }
   try {
     const videogamePromiseApi = [];
     for (let index = 1; index <= pages; index++) {
       videogamePromiseApi.push(
         axios.get(
-          `https://api.rawg.io/api/games?${searchName}key=${API_KEY}&page_size=40&page=${index}`
+          `https://api.rawg.io/api/games?${searchName}key=${API_KEY}&page_size=25&page=${index}`
         )
       );
     }
@@ -86,8 +86,8 @@ router.get("/", (req, res, next) => {
       
         }
         if(name){
-            games = orderAsc(games)
-            games.splice(15,games.length-15);
+            // games = orderAsc(games)
+            // games.splice(15,games.length-15);
         }
         if (games.length > 0) res.json(games);
         else {

@@ -7,7 +7,8 @@ import {
 const initialState = {
     videogames :[],
     filteredVideogames:[],
-    genres: []
+    genres: [],
+    
 }
 
 export default function reducer(state = initialState, action){
@@ -54,6 +55,7 @@ export default function reducer(state = initialState, action){
                 ...state,
               filteredVideogames: order(action.payload) 
             }
+       
         
         default: return state
     }
