@@ -1,7 +1,9 @@
 import axios from 'axios'
 export const GET_ALL_VIDEOGAMES = 'GET_ALL_VIDEOGAMES'
 export const GET_SEARCH_VIDEOGAMES = 'GET_SEARCH_VIDEOGAMES'
+export const FILTERBYSOURCE ='FILTERBYSOURCE'
 export const SORT = 'SORT'
+export const FILTER = 'FILTER'
 const url = 'http://localhost:3001';
 //http://localhost:3001/videogames
 
@@ -45,4 +47,17 @@ export function sort(order){
         payload: order
     }
 
+}
+export function filter(genresfiltered){
+    return {
+        type: FILTER,
+        payload: genresfiltered
+    }
+
+}
+export function filterBySource(filterType){
+    return {
+        type: FILTERBYSOURCE,
+        payload: filterType
+    }
 }

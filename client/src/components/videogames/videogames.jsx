@@ -3,7 +3,9 @@
 // import {getAllVideogames} from '../../store/actions'
 import Order from "../order/order"
 import Searchbar from "../searchbar/searchbar"
+import Filters from "../filters/filters"
 //import Videogame from "../videogame/videogame"
+import FilterBySource from "../filterBySource/filterBySource"
 import Pagination from "../pagination/pagination"
 import React from "react"
 import './videogames.css'
@@ -33,7 +35,9 @@ export default function Videogames(){
         
         <Order/>
         <Searchbar/>
-        <Pagination key={1}/>
+        <FilterBySource/>
+        <Filters/>
+        <Pagination/>
         {/* <Pagination totalRecords={videogames.length} pageLimit={pageLimit}/> */}
 
         {/* <div className="containerVG">
