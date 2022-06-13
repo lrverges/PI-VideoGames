@@ -14,7 +14,8 @@ const initialState = {
     filteredVideogames:[],
     order: ASCENDINGNAME,    
     filterSource: ALL,
-    genresFiltered: []
+    genresFiltered: [],
+    
 }
 
 export default function reducer(state = initialState, action){
@@ -67,9 +68,10 @@ export default function reducer(state = initialState, action){
                 videogamesFiltered = videogamesFiltered.filter(videogame => videogame.id.toString().length<10)
             
         if (filterSource===CREATEDBYUSER) 
-                videogamesFiltered = videogamesFiltered.filter(videogame => videogame.id.toString().length>10)
-        
+               videogamesFiltered = videogamesFiltered.filter(videogame => videogame.id.toString().length>10)
+           // videogamesFiltered = videogamesFiltered.filter(videogame => videogame.id.toString()==="8791468c-311f-4abb-a946-e54f806e316c")
         //videogamesFiltered = order(state.order, videogamesFiltered)
+        console.log(videogamesFiltered)
         return videogamesFiltered
         }
         //return videogamesFiltered
@@ -106,14 +108,16 @@ export default function reducer(state = initialState, action){
             return{
                 ...state, 
                 videogames: [...action.payload],
-                filteredVideogames: orderVG(state.order,[...action.payload])
+                filteredVideogames: orderVG(state.order,[...action.payload]),
+               
             }
         case GET_SEARCH_VIDEOGAMES:
             return{
                 ...state, 
               //  filteredVideogames: orderVG(state.order,[...action.payload])
                 videogames: [...action.payload],
-                filteredVideogames : handlerAll(state.filterSource, state.genresFiltered, [...action.payload])
+                filteredVideogames : handlerAll(state.filterSource, state.genresFiltered, [...action.payload]),
+              
             }
         case SORT:
                    
@@ -126,14 +130,17 @@ export default function reducer(state = initialState, action){
             return{
                 ...state,
                 filteredVideogames : handlerAll(state.filterSource, action.payload),
-                genresFiltered : action.payload
+                genresFiltered : action.payload,
+               
             }
         case FILTERBYSOURCE:
             
             return {
                 ...state,
                 filteredVideogames : handlerAll(action.payload, state.genresFiltered),
-                filterSource : action.payload
+                filterSource : action.payload,
+             
+
             }
            // filterSource = state.filterSource, order = state.order, genresFiltered = state.genresFiltered
         default: return state

@@ -8,6 +8,7 @@ import Videogame from "../videogame/videogame"
 export default function Pagination(){
     let pageLimit = 15
     let videogames = useSelector(state => state.filteredVideogames) //traigo parte del state
+    let genresFiltered = useSelector(state => state.genresFiltered)
     const dispatch = useDispatch();
     const [currentPage, setCurrentPage] = useState(0);
     const [showVideogames, setShowVideogames] = useState(videogames.slice(0,pageLimit)) 
@@ -68,19 +69,17 @@ useEffect(()=>{
             <button className="botonItemPage" onClick={(e)=>nextPage(e)}>next</button>
     </nav>
 
-    {showVideogames.length>0 ? 
-        
-
-        showVideogames.map((videogame)=>{
-          
+    {  showVideogames.length>0 || (!showVideogames.length &&  genresFiltered.length>0) ? showVideogames.map((videogame)=>{
+            
             return <Videogame 
-                datos={videogame}
-                 key={videogame.id}
-                // name={video.name} 
-                // image={video.image_background} 
-                // genres={video.genres}
+            datos={videogame}
+            key={videogame.id}
+            // name={video.name} 
+            // image={video.image_background} 
+            // genres={video.genres}
             />
-              
-        }): <div>cargando</div>}
+            
+        }) : <div>cargando</div>   } 
     </>)
 }
+// showVideogames.length>0 ? 

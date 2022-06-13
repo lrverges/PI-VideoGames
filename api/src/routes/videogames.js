@@ -70,20 +70,21 @@ router.get("/", (req, res, next) => {
         let games = getVideogames.map((game) => selectColumns(game));
 
         const arrayBd = respuesta[respuesta.length - 1].value;
-       
-        const videogameDb = {}
-        for (let index = 0; index < arrayBd.length; index++) {
-            videogameDb.id = arrayBd[index].dataValues.id;
-            videogameDb.name = arrayBd[index].dataValues.name;
-            videogameDb.image_background = arrayBd[index].dataValues.image_background;
-            videogameDb.genres = arrayBd[index].dataValues.genres.map((element) => {
+      
+        let videogameDb = {}
+        for (let i = 0; i < arrayBd.length; i++) {
+            videogameDb = {};
+            videogameDb.id = arrayBd[i].dataValues.id;
+            videogameDb.name = arrayBd[i].dataValues.name;
+            videogameDb.image_background = arrayBd[i].dataValues.image_background;
+            videogameDb.genres = arrayBd[i].dataValues.genres.map((element) => {
                 return {
                   //id: element.id,
                   name: element.name,
                 };
               }),
             games.push(videogameDb)
-      
+          
         }
         if(name){
             // games = orderAsc(games)
