@@ -76,6 +76,7 @@ router.get("/", (req, res, next) => {
             videogameDb = {};
             videogameDb.id = arrayBd[i].dataValues.id;
             videogameDb.name = arrayBd[i].dataValues.name;
+            videogameDb.rating = parseFloat(arrayBd[i].dataValues.rating);
             videogameDb.image_background = arrayBd[i].dataValues.image_background;
             videogameDb.genres = arrayBd[i].dataValues.genres.map((element) => {
                 return {

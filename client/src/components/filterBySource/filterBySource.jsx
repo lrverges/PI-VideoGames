@@ -1,23 +1,28 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { filterBySource } from "../../store/actions";
 
 import { ALL, API, CREATEDBYUSER } from "./constants";
 
-export default function FilterBySource(){
-    const dispatch = useDispatch()
-    function onSelectChange(e){
-        dispatch(filterBySource(e.target.value))
-        e.preventDefault();
-    }
+export default function FilterBySource() {
+  const dispatch = useDispatch();
+  let filterSource = useSelector((state) => state.filterSource);
+  function onSelectChange(e) {
+    dispatch(filterBySource(e.target.value));
+    e.preventDefault();
+  }
 
-    return ( 
+  return (
     <>
-        <span>Select Source </span>
-        <select name="selectSource" onChange={onSelectChange}>
-                    <option value={ALL}>All</option>
-                    <option value={API}>Only from API</option>
-                    <option value={CREATEDBYUSER}>Only Created by User</option>
-
-        </select>
+      <span>Select Source </span>
+      <select
+        name="selectSource"
+        onChange={onSelectChange}
+        defaultValue={filterSource}
+      >
+        <option value={ALL}>All</option>
+        <option value={API}>Only from API</option>
+        <option value={CREATEDBYUSER}>Only Created by User</option>
+      </select>
     </>
-)}
+  );
+}

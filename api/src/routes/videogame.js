@@ -22,7 +22,7 @@ router.get("/:idVideogame", async (req, res, next)=>{
     //Debe traer solo los datos pedidos en la ruta de detalle de videojuego
     //Incluir los géneros asociados
     const id = req.params.idVideogame
-    let game
+    let game = {}
     try {
         if(id.toString().length<10)
              {
@@ -32,11 +32,28 @@ router.get("/:idVideogame", async (req, res, next)=>{
                     //res.json(game)
             }
             else {
-                game = await Videogame.findByPk(id, {
-                    include: Genre,
+                gameByBD = await Videogame.findByPk(id, {
+                    include: 
+                    {
+                        model: Genre,
+                        attributes: ["name"],
+                        through: { attributes: [] },
+                      },
                 });
                
-            }   
+            game = {
+            id: gameByBD.id,
+            name: gameByBD.name,
+            description: gameByBD.description,
+            released: gameByBD.released,
+            rating: parseFloat(gameByBD.rating),
+            platforms: gameByBD.platforms,
+            genres: gameByBD.genres.map(genre =>  genre.name),
+            image_background: gameByBD.image_background,
+            }
+
+            }  
+            
             res.json(game)
             
     } catch (error) {
