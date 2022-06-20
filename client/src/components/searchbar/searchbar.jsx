@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getSearchVideogames, getAllVideogames } from "../../store/actions";
-
+import './searchbar.css'
 export default function Searchbar() {
   const [search, setSearch] = useState("");
   let dispatch = useDispatch();
@@ -17,10 +17,10 @@ export default function Searchbar() {
   }
 
   return (
-    <div>
+    <div className='containerSearchbar'>
       <form onSubmit={onSubmit}>
         <input type="text" onChange={oninputChange} value={search} />
-        <input type="submit" value="buscar" />
+        <input type="submit" value="Search" />
       </form>
     </div>
   );

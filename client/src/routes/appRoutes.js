@@ -21,11 +21,6 @@ export const AppRoutes = () => {
         </Route>
         <Route exact path="*" element={<NotFound />} />
       </Routes>
-      {/* <Routes>
-        
-          <Route path='/' element={<NavBar />}>
-          </Route>
-      </Routes> */}
     </>
   );
 };

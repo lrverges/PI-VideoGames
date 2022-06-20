@@ -17,7 +17,7 @@ export default function Order() {
 
   return (
     <>
-      <span>Ordenar por </span>
+      {/* <span>Ordenar por </span> */}
       <select
         name="selectOrder"
         onChange={onSelectChange}

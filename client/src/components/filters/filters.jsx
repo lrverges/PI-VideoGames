@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { filter } from "../../store/actions";
+import './filters.css'
 const url = "http://localhost:3001";
 
 export default function Filters() {
@@ -71,9 +72,9 @@ export default function Filters() {
   }
 
   return (
-    <>
-      <div>Filters</div>
-
+    <section className="selectionFilters">
+      <h5 className="titleFilter">Filters</h5>
+      <section className="listbuttons">
       {state.filtered &&
         state.filtered.map((genre) => {
           return (
@@ -87,9 +88,9 @@ export default function Filters() {
             </button>
           );
         })}
-
-      <div>Generos</div>
-
+      </section>
+      <h5 className="titleFilter">Generos</h5>
+        <section className="listbuttons">
       {state.unFiltered &&
         state.unFiltered.map((genre) => {
           return (
@@ -103,6 +104,7 @@ export default function Filters() {
             </button>
           );
         })}
-    </>
+        </section>
+    </section>
   );
 }

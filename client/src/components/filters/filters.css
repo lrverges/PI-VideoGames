@@ -1,0 +1,26 @@
+.listbuttons{
+    display: flex;
+    flex-direction: column;
+}
+
+.botonGenre{
+    width: 100px;
+    margin-top: 5px;
+    background-color: #2340be;
+    color: wheat;
+    border-style: none;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+}
+
+.selectionFilters{
+    background-color: #1332bb;
+    height: 100%;
+    padding: 5px;
+}
+.titleFilter{
+    color: white;
+    border-bottom: white solid 1px;
+    margin-bottom: 10px;
+}

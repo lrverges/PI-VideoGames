@@ -1,3 +1,11 @@
-.containerVG{
-    flex-grow: inherit;
+.containerVideoGames{
+    min-height: 100vh; /**/
+    display: flex;
+    flex-direction: row;
+    background-image: url('../../image/papel-arrugado.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background: white; */
+    box-sizing: border-box;/**/
+    
 }

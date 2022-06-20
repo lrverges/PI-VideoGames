@@ -136,8 +136,8 @@ export default function CreateVideogame() {
             id="rating"
             name="rating"
             step="0.1"
-            min="0"
-            max="5.0"
+            // min="0"
+            // max="5.0"
             className="input_create"
             onChange={onInputChange}
             required

@@ -1,0 +1,25 @@
+.pageContainer{
+  display: flex;
+  justify-content: center;
+}
+
+.page {
+    display:flex;
+    justify-content: center;
+    justify-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .itemPage{
+    list-style: none;
+  }
+  .buttonItemPage{
+    padding: 10px;
+    margin: 4px;
+  }
+  
+  .containerCards{
+    display:flex ;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }

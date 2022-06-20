@@ -1,21 +1,74 @@
 
-.container {
-	
-	border: 1px solid rgba(45, 0, 75, 0.489);
-	border-radius: 10px;
-	width: 300px;
-	height: 250px;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	display: flex;
-	flex-direction: column;
-	padding: 10px;
-}
+.card { 
+	display: inline-block;
+	position: relative;
+	width: 270px;
+	min-width: 250px;
+	height: 270px;
+	border-radius: 0 30px 30px 30px;
+	overflow:hidden;
+	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.9);
+	margin-left: 10px;
+	margin-top: 30px;
+  }
+  .card:hover{
+	transform: translateY(-0.5rem) scale(1.0125);
+	box-shadow: 0 0.5em 3rem -1rem rgba(0,0,0,0.5);
+  }
 
-.imgVideogame {
-	width: 100px;
-	height: 24vh;
-	width: 300px;
-	overflow: hidden;
-	border-radius: 10px;
+  .imgVideogame {
+	height: 80%;
+	width: 100%;
+  }
+  
+  .bkDescription {
+	border-radius: 30px;
+	position: absolute;
+	top: 55%;
+	left: -5px;
+	height: 65%;
+	width: 108%;
+	transform: skew(19deg, -9deg);
+	background-image: linear-gradient(-20deg , #1332bb, #5cc0e7)
 }
+.center{
+	padding-top: 8px;
+	text-align: center;
+	color: white;
+	text-shadow: 1px 2px 2px rgb(31, 30, 30);
+}
+.titleVG{
+	/* color: white; */
+	color: rgba(47, 255, 82, 0.795);
+	text-shadow: 1px 2px 2px rgb(77, 74, 74);
+}
+.rating {
+	height: 60px;
+	width: 40px;
+	background-color: rgba(47, 255, 82, 0.795);
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	overflow:hidden;
+	box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.7);
+  }
+ 
+ 
+  .nameVG {
+	position: absolute;
+	/* color: rgba(47, 255, 82, 0.795); */
+	color: white;
+	text-align: center;
+	text-shadow:1px 2px 2px rgb(31, 30, 30);
+	padding-right: 10px;
+	font-weight: 600;
+	right: 5px;
+	top: 62%;
+  }
+  
+  .genres {
+	position: absolute;
+	color: #fff;
+	left: 30px;
+	top: 75%;
+  }

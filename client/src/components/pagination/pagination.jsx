@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllVideogames } from "../../store/actions";
 import Videogame from "../videogame/videogame";
+import './pagination.css'
 
 export default function Pagination() {
   let pageLimit = 15;
@@ -49,18 +50,18 @@ export default function Pagination() {
   }
 
   return (
-    <>
-      <nav>
-        <button className="botonItemPage" onClick={(e) => previusPage(e)}>
+    <section>
+      <nav className="pageContainer">
+        <button className="buttonItemPage" onClick={(e) => previusPage(e)}>
           Prev
         </button>
-        <ul>
+        <ul  className='page'>
           {range &&
             range.map((page) => {
               return (
                 <li className="itemPage" key={page}>
                   <button
-                    className="botonItemPage"
+                    className="buttonItemPage"
                     onClick={(e) => onPageChanged(e, page)}
                   >
                     {page}
@@ -69,10 +70,11 @@ export default function Pagination() {
               );
             })}
         </ul>
-        <button className="botonItemPage" onClick={(e) => nextPage(e)}>
+        <button className="buttonItemPage" onClick={(e) => nextPage(e)}>
           next
         </button>
-      </nav>
+      </nav >
+      <div className="containerCards">
       {showVideogames.length > 0 ? (
         showVideogames.map((videogame) => {
           return (
@@ -90,6 +92,7 @@ export default function Pagination() {
       ) : (
         <div>cargando</div>
       )}
-    </>
+      </div>
+    </section>
   );
 }

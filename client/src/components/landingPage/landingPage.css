@@ -1,10 +1,59 @@
 .back_image {
     background-image: url("../../image/background_image.jpg");
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: cover;
     background-position: center;
-    width: 100vw;
-    height: 100vh;
-    background-attachment: fixed;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .container{
+    position: relative;
+    border: none;
+    align-items: center;
+  }
+  .title{
+    color: yellow;
+  }
+  .subtitle{
+    color: white;
+  }
+  .navLink{
+    text-decoration: none;
+  }
+ 
+  .btn_home{
+    color: #ffffff;
+    font-size: medium;
+    text-shadow: 1px 1px 3px #666666;
+    border: solid #1805a8 2px;
+    background-color: #0542fa;
+    border-radius: 10px;
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .btn_home:hover{
+    background-color: #27c02f;
+    border: solid #0b530f 2px;
+  }
+  .btn_home::after{
+    content: "";
+    display: block;
+    width: 0px;
+    height: 24px;
+    overflow: hidden;
+    background-image: url("../../image/kuba_arrow_button_set_2.svg");
+    background-repeat: no-repeat;
+    transition: width 200ms, margin-left 200ms;
     
+  }
+
+  .btn_home:is(:hover,:focus)::after{
+   
+    width: 24px;
+    margin-left: 8px;
   }

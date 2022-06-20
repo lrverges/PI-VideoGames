@@ -1,4 +1,9 @@
+import './about.css'
 
 export default function About(){
-    return <div>Soy el About</div>
-}
+    return (
+    
+    <div className="containerAbout">
+        Soy el About
+        </div>
+)}

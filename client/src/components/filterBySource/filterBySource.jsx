@@ -13,7 +13,7 @@ export default function FilterBySource() {
 
   return (
     <>
-      <span>Select Source </span>
+      {/* <span>Select Source </span> */}
       <select
         name="selectSource"
         onChange={onSelectChange}

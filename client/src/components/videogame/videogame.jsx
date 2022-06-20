@@ -3,18 +3,21 @@ import "./videogame.css";
 
 export default function Videogame({ datos }, key) {
   return (
-    <div key={key} className="container">
+    <div key={key} className="card">
       <Link to={`/detail/${datos.id}`}>
         <img
           className="imgVideogame"
           src={datos.image_background}
           alt={datos.name}
-        />
-        <h3>{datos.name}</h3>
-        <span>Rating {datos.rating}</span>
-        {datos.genres?.map((genre, index) => {
-          return <div key={index}>{genre.name}</div>;
-        })}
+          />
+          <div className="bkDescription">.</div>
+        <h3 className="nameVG">{datos.name}</h3>
+        <div className="genres"><h3 className="titleVG">Genres:</h3>{datos.genres?.map((genre) =>genre.name).join(', ')}</div>
+       <div className="rating">
+       <h4 className="center">{datos.rating}</h4>
+       <h6 className="center">Rating</h6>
+       </div>
+       
       </Link>
     </div>
   );
