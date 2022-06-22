@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { sort } from "../../store/actions";
+import './order.css'
 import {
   ASCENDINGNAME,
   DESCENDINGNAME,
@@ -18,7 +19,7 @@ export default function Order() {
   return (
     <>
       {/* <span>Ordenar por </span> */}
-      <select
+      <select className="inputSelectOrder"
         name="selectOrder"
         onChange={onSelectChange}
         defaultValue={orderSelect}

@@ -1,24 +1,58 @@
 .pageContainer{
+  margin-top: 50px;
+  margin-left: 60px;  
+
   display: flex;
   justify-content: center;
 }
-
+.visibleButton{
+  display: none;
+ 
+}
+.noResultsContainer{
+  /* padding: 200px 330px 200px 330px; */
+  padding: 10vw 35vw 35vw 35vw;
+  /* padding-left: 35vw;
+  padding-right: 35vw; */
+  /* padding-right: 100%; */
+  /* width: 100%; */
+  background-color: white;
+}
+.pageContainerDown{
+  margin-top: 20px;
+}
 .page {
-    display:flex;
-    justify-content: center;
-    justify-items: center;
-    margin-left: 10px;
-    margin-right: 10px;
+  display:flex;
+  justify-content: center;
+  justify-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.buttonItemPage{
+  color: white;
+  padding: 10px;
+  margin: 4px;
+  background-image: linear-gradient(-20deg , #6373bb, #5cc0e7);
+  border-radius: 10%;
+  border-style: none;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
+  text-shadow: 1px 1px 1px rgb(31, 30, 30);
+}
+.activePage{
+  color:yellow;
+  background-image: linear-gradient(-20deg , #1936bb, #25aee4);
+}
+  .buttonItemPage:hover{
+    background-image: linear-gradient(-20deg , #6dbb63, #6ce75c);
   }
+
   .itemPage{
     list-style: none;
-  }
-  .buttonItemPage{
-    padding: 10px;
-    margin: 4px;
-  }
-  
+  } 
   .containerCards{
+    
+    margin-left: 100px;
     display:flex ;
     flex-wrap: wrap;
     justify-content: space-evenly;

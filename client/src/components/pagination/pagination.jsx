@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllVideogames } from "../../store/actions";
 import Videogame from "../videogame/videogame";
+import noResults from  '../../image/noResults.jpg'
+import Loader from "../loader/loader";
 import './pagination.css'
 
 export default function Pagination() {
@@ -52,8 +54,8 @@ export default function Pagination() {
   return (
     <section>
       <nav className="pageContainer">
-        <button className="buttonItemPage" onClick={(e) => previusPage(e)}>
-          Prev
+        <button className={showVideogames.length>0?"buttonItemPage":'visibleButton buttonItemPage'} onClick={(e) => previusPage(e)}>
+          prev
         </button>
         <ul  className='page'>
           {range &&
@@ -61,7 +63,8 @@ export default function Pagination() {
               return (
                 <li className="itemPage" key={page}>
                   <button
-                    className="buttonItemPage"
+                    className={page===currentPage+1?"activePage buttonItemPage":"buttonItemPage"}
+  
                     onClick={(e) => onPageChanged(e, page)}
                   >
                     {page}
@@ -70,7 +73,7 @@ export default function Pagination() {
               );
             })}
         </ul>
-        <button className="buttonItemPage" onClick={(e) => nextPage(e)}>
+        <button className={showVideogames.length>0?"buttonItemPage":'visibleButton buttonItemPage'} onClick={(e) => nextPage(e)}>
           next
         </button>
       </nav >
@@ -81,18 +84,45 @@ export default function Pagination() {
             <Videogame
               datos={videogame}
               key={videogame.id}
-              // name={video.name}
-              // image={video.image_background}
-              // genres={video.genres}
+             
             />
           );
         })
       ) : loaded ? (
-        <div>Sin datos</div>
+        <div >
+          <img className='noResultsContainer' src={noResults} alt="no results" />
+        </div>
       ) : (
-        <div>cargando</div>
+        <div className="noResultsContainer">
+       <Loader/>
+       </div>
       )}
       </div>
+      <nav className="pageContainer pageContainerDown">
+        <button className={showVideogames.length>0?"buttonItemPage":'visibleButton buttonItemPage'} onClick={(e) => previusPage(e)}>
+          prev
+        </button>
+        <ul  className='page'>
+          {range &&
+            range.map((page) => {
+              return (
+                <li className="itemPage" key={page}>
+                  <button
+                    className={page===currentPage+1?"activePage buttonItemPage":"buttonItemPage"}
+  
+                    onClick={(e) => onPageChanged(e, page)}
+                  >
+                    {page}
+                  </button>
+                </li>
+              );
+            })}
+        </ul>
+        <button className={showVideogames.length>0?"buttonItemPage":'visibleButton buttonItemPage'} onClick={(e) => nextPage(e)}>
+          next
+        </button>
+      </nav >
+
     </section>
   );
 }

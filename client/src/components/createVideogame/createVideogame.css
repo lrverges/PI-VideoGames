@@ -1,9 +1,30 @@
+.containerCreate{
+    position: absolute;
+    background-image: url("../../image/background_image.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:top center;
+    background-attachment: fixed;
+    width: 100%;
+    /* height: 100%; */
+}
 .main{
-    position:relative;
+    /* position:relative; */
+    align-items: center;
+    padding: 20px;
+    margin: 70px 10% 0px 10%;
     display: flex;
     flex-direction: column;
-    background-color: #242329;
+    background-color: #242329c2;
     color: #fff;
+}
+.containerButtonForm{
+    display: flex;
+    flex-direction: row;
+}
+.buttonForm{
+    padding: 5px;
+    margin: 5px;
 }
 .input_group{
     /* border: red solid; */
@@ -17,8 +38,10 @@
     flex-direction: row;
 }
 
+
 .input_create{
-    padding: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
     border: 2px solid #fff;
     border-radius:4px;
     font: inherit;
@@ -28,7 +51,9 @@
     -moz-outline-radius: 20px;
     /* outline: 2px solid #fff; */
 }
-
+.input_description{
+    width: 620px;
+}
 .input_label{
     position: absolute;
     top: 0;
@@ -38,7 +63,6 @@
 
 }
 .input_create:focus+.input_label
-
 ,
 .input_create:valid+.input_label
 {
@@ -54,11 +78,32 @@
     color: #d1c5dc;
 
 }
-
+.input_url{
+    width: 620px;
+}
 .color_released{
     color: #242329;
     
 }
 .color_released::-webkit-calendar-picker-indicator {
     filter: invert(1);
+}
+.containerFieldsets{
+    display: flex;
+    flex-direction: row;
+}
+
+.fieldset_genres{
+    padding: 10px;
+    margin-right: 5px;
+}
+.fieldset_platforms{
+    padding: 10px;
+    display:grid ;
+    grid-template-columns: auto auto auto;
+    /* flex-wrap: wrap;
+    justify-content: space-evenly; */
+}
+.invalid{
+    color:red;
 }

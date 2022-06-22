@@ -19,8 +19,8 @@ export default function Searchbar() {
   return (
     <div className='containerSearchbar'>
       <form onSubmit={onSubmit}>
-        <input type="text" onChange={oninputChange} value={search} />
-        <input type="submit" value="Search" />
+        <input className="inputSearchBar" type="text" onChange={oninputChange} value={search} />
+        <input className="btnSearchBar" type="submit" value="Search" />
       </form>
     </div>
   );

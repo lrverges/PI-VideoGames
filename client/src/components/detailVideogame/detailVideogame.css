@@ -1,0 +1,46 @@
+.containerDetail{
+    
+    position: absolute;
+    background-image: url("../../image/background_image.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:top center;
+    background-attachment: fixed;
+    width: 100%;
+    /* height: 100%; */
+}
+.mainDetail{
+    /* position:relative; */
+    min-height:100vh;
+    align-items: center;
+    padding: 20px;
+    margin: 70px 10% 0px 10%;
+    display: flex;
+    flex-direction: column;
+    background-color: #242329c2;
+    color: rgb(230, 228, 228);
+}.nameTitle{
+    color: yellow;
+}
+/* .image_detail{
+    width: 264px;
+    height: 200px;
+    border: white solid 2px;
+    align-items: center;
+    overflow: hidden;
+
+} */
+.datosDetail{
+    color: white;
+}
+.subtitleDetail{
+    color: yellow;
+}
+.imgDetail{
+    max-block-size: -webkit-fill-available;
+    width: 300px;
+    border: #fff solid 2px;
+}
+.descriptionDetail{
+    text-align:justify;
+}

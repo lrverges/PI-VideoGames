@@ -26,12 +26,13 @@ export default function CreateVideogame() {
   });
 
   const [platforms, setPlatforms] = useState([]);
-
+  
   useEffect(() => {
     axios.get(`${url}/platforms`).then((response) => {
       setPlatforms(response.data);
     });
     dispatch(getGenres());
+    window.scroll(0,0);
   }, [dispatch, setPlatforms]);
 
   function onInputChange(e) {
@@ -50,6 +51,8 @@ export default function CreateVideogame() {
         ...videogame,
         [e.target.name]: [...videogame[e.target.name], e.target.value],
       });
+      if(e.target.name === 'platforms')
+      setErrors(validate({...videogame, [e.target.name]: [...videogame[e.target.name], e.target.value] }));
     } else {
       setVideogame({
         ...videogame,
@@ -57,9 +60,15 @@ export default function CreateVideogame() {
           (elem) => e.target.value !== elem
         ),
       });
+      if(e.target.name === 'platforms')
+      setErrors(validate({...videogame,  [e.target.name]: videogame[e.target.name].filter(
+        (elem) => e.target.value !== elem
+      )}))
     }
-    console.log(videogame.genres);
+
+    
   }
+
 
   function validate(input) {
     let errors = {};
@@ -68,6 +77,7 @@ export default function CreateVideogame() {
       errors.name = "Name is invalid";
     } //[a-z] cualquier letra \d cualquier numero \- se permite - y _
     // \s espacios en blanco
+
     if (input.description.length === 0)
       errors.description = "Description is requerid";
     else if (!/[a-z\d+&+?+¿\-_\s]+$/i.test(input.description)) {
@@ -75,6 +85,7 @@ export default function CreateVideogame() {
     }
     let released = new Date(input.released);
     let hoy = new Date();
+
     if (released > hoy) errors.released = "invalid date: must be less";
     if (released < new Date("1947-01-25"))
       errors.released =
@@ -85,6 +96,7 @@ export default function CreateVideogame() {
     const reg_exUrl =
       /(http|https|ftp|ftps)+:\/\/[a-zA-Z0-9\-.]+\.[a-zA-Z]{2,3}(\/\S*)?/;
     const reg_exImg = /.*(png|jpg|jpeg|gif)$/;
+    if(input.image_background.length>0){
     if (
       input.image_background.length > 0 &&
       !reg_exUrl.test(input.image_background)
@@ -92,23 +104,33 @@ export default function CreateVideogame() {
       errors.image_background = "not a valid url";
     else if (!reg_exImg.test(input.image_background))
       errors.image_background = "not a valid image";
-    if (input.platforms.length === 0)
+    }
+    if (input.platforms.length === 0){
       errors.platforms = "Please select at least one platform";
-
+    }
+    console.log(errors.platforms)
     return errors;
+  }
+  function cancel(e){
+    e.preventDefault();
+    navigate("/home");
   }
   function onSubmit(e) {
     e.preventDefault();
-    
     try {
+      if(Object.keys(errors).length === 0){
       axios.post(`${url}/videogame`, videogame);
       alert("has been created successfully");
-      navigate("/home");
+      navigate("/home");}
+      else{
+        alert('Fill out all of the required fields correctly...')
+      }
     } catch (error) {
       alert(error);
     }
   }
   return (
+    <div className="containerCreate">
     <form onSubmit={onSubmit} className="main">
       <header>
         <h2>Create Videogame</h2>
@@ -163,6 +185,7 @@ export default function CreateVideogame() {
             Released{" "}
           </label>
         </div>
+        
         <p className={errors.released && "invalid"}>{errors.released}</p>
       </section>
 
@@ -171,7 +194,7 @@ export default function CreateVideogame() {
           type="text"
           id="image_background"
           name="image_background"
-          className="input_create"
+          className="input_create input_url"
           onChange={onInputChange}
           value={videogame.image_background}
           required
@@ -187,7 +210,7 @@ export default function CreateVideogame() {
         <textarea
           id="description"
           name="description"
-          className="input_create"
+          className="input_create input_description"
           rows="10"
           cols="72"
           onChange={onInputChange}
@@ -201,8 +224,8 @@ export default function CreateVideogame() {
         <p className={errors.description && "invalid"}>{errors.description}</p>
       </div>
       <br />
-
-      <fieldset>
+    <div className="containerFieldsets">
+      <fieldset className="fieldset_genres">
         <legend>Genres</legend>
 
         {genres.length > 0 ? (
@@ -226,10 +249,11 @@ export default function CreateVideogame() {
         ) : (
           <div>Cargando</div>
         )}
-        <p className={errors.genres && "invalid"}>{errors.genres}</p>
+        {/* <p className={errors.platforms && "invalid"}>{errors.platforms}</p> */}
       </fieldset>
-      <fieldset>
+      <fieldset >
         <legend>Platforms</legend>
+        <div className="fieldset_platforms">
         {platforms.length > 0 ? (
           platforms.map((platform, i) => {
             return (
@@ -251,10 +275,15 @@ export default function CreateVideogame() {
         ) : (
           <div>Cargando</div>
         )}
+        </div>
         <p className={errors.platforms && "invalid"}>{errors.platforms}</p>
       </fieldset>
-      <input type="submit" value="submit" />
-      <input type="button" value="cancel" />
+    </div>
+    <div className="containerButtonForm">
+      <input className='buttonForm' type="submit" value="submit" />
+      <input className='buttonForm' type="button" value="cancel" onClick={cancel} />
+    </div>
     </form>
+    </div>
   );
 }

@@ -1,9 +1,29 @@
-.containerSearchbar{
-    
-    /* position: absolute;
-    margin: 0;
-    float: right;
-
-    justify-content: right; */
-    background-color: blue;
+.inputSearchBar{
+    border-style: none;
+    /* border: none; */
+    border-radius: 5%;
+    height: 20px;
 }
+
+.btnSearchBar{
+    padding: 1px;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    border-radius: 5%;
+    margin-left: 5px;
+    padding-inline: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-shadow: 1px 1px 3px #666666;
+}
+
+.btnSearchBar:hover{
+    background-color: #4CAF50; /* Green */
+    color:yellow;
+  
+   }

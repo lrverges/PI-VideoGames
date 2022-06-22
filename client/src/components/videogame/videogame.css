@@ -1,7 +1,10 @@
 
 .card { 
+	
 	display: inline-block;
 	position: relative;
+	text-align: center;
+    background-color: black;
 	width: 270px;
 	min-width: 250px;
 	height: 270px;
@@ -18,7 +21,7 @@
 
   .imgVideogame {
 	height: 80%;
-	width: 100%;
+
   }
   
   .bkDescription {
@@ -29,7 +32,9 @@
 	height: 65%;
 	width: 108%;
 	transform: skew(19deg, -9deg);
-	background-image: linear-gradient(-20deg , #1332bb, #5cc0e7)
+	color: #111111;
+	background-image: linear-gradient(-10deg , #7b7d81, #000000);
+	/* background-image: linear-gradient(-20deg , #1332bb, #5cc0e7); */
 }
 .center{
 	padding-top: 8px;
