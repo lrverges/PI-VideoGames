@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
     },
     rating:{
       type: DataTypes.DECIMAL,
-      validate: {min:0, max:5}
+      validate: {min:0, max:10}
     },
     platforms:{
       type: DataTypes.ARRAY(DataTypes.STRING),
@@ -37,4 +37,3 @@ module.exports = (sequelize) => {
   });
 };
 
-//https://api.rawg.io/api/games?key=51a51aa49db84c6c8ddf88690a6beca1

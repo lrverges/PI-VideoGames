@@ -89,7 +89,7 @@ export default function Filters() {
           );
         })}
       </section>
-      <h5 className="titleFilter">Generos</h5>
+      <h5 className="titleFilter">Select Genres</h5>
         <section className="listbuttons">
       {state.unFiltered &&
         state.unFiltered.map((genre) => {

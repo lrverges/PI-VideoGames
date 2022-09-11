@@ -1,5 +1,5 @@
 .pageContainer{
-  margin-top: 50px;
+  margin-top: 70px;
   margin-left: 60px;  
 
   display: flex;
@@ -11,7 +11,7 @@
 }
 .noResultsContainer{
   /* padding: 200px 330px 200px 330px; */
-  padding: 10vw 35vw 35vw 35vw;
+  padding: 15vw 35vw 35vw 35vw;
   /* padding-left: 35vw;
   padding-right: 35vw; */
   /* padding-right: 100%; */

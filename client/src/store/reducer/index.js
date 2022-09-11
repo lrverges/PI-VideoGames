@@ -24,6 +24,7 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
+  
   function handlerAll(filterSource, genresFiltered, videogames) {
     state.loaded = false;
     let filteredVideogames = videogames ? videogames : [...state.videogames];
@@ -35,7 +36,6 @@ export default function reducer(state = initialState, action) {
       ...filterVideogames(genresFiltered, filteredVideogames),
     ];
     filteredVideogames = orderVG(state.order, filteredVideogames);
-    // console.log(filteredVideogames.length)
 
     state.loaded = true;
     return filteredVideogames;
@@ -44,7 +44,7 @@ export default function reducer(state = initialState, action) {
   function filterVideogames(genresFiltered, videogamesFiltered) {
     if (genresFiltered.length > 0) {
       let idGeneros = genresFiltered.map((genre) => genre.name);
-      console.log(idGeneros);
+
       videogamesFiltered = videogamesFiltered.filter((videogame) =>
         idGeneros.every((genre) =>
           videogame.genres
@@ -52,18 +52,12 @@ export default function reducer(state = initialState, action) {
             .includes(genre)
         )
       );
-    } else {
-      console.log("sin filtrar");
     }
-    //  videogamesFiltered = order(state.order, videogamesFiltered)
+
     return videogamesFiltered;
   }
 
   function filterBySource(filterSource, videogamesFiltered) {
-    //  let videogamesFiltered = [...state.videogames]
-    //   console.log(filterSource)
-    //ALL, API, CREATEDBYUSER
-    //    if(filterSource===ALL) return videogamesFiltered
     if (filterSource === API)
       videogamesFiltered = videogamesFiltered.filter(
         (videogame) => videogame.id.toString().length < 10
@@ -73,24 +67,18 @@ export default function reducer(state = initialState, action) {
       videogamesFiltered = videogamesFiltered.filter(
         (videogame) => videogame.id.toString().length > 10
       );
-    // videogamesFiltered = videogamesFiltered.filter(videogame => videogame.id.toString()==="8791468c-311f-4abb-a946-e54f806e316c")
-    //videogamesFiltered = order(state.order, videogamesFiltered)
-    console.log(videogamesFiltered);
+
     return videogamesFiltered;
   }
-  //return videogamesFiltered
 
   function orderVG(order, ordenedVideogames) {
-    //  let ordenedVideogames = [...state.filteredVideogames]
     let byAttribute = "";
     if (order.includes("Name")) {
       byAttribute = "name";
     } else byAttribute = "rating";
 
     ordenedVideogames = ordenedVideogames.sort((a, b) => {
-      // console.log(a[byAttribute])
       if (a[byAttribute] < b[byAttribute]) {
-        console.log(order.includes("ascending"));
         return order.includes("ascending") ? -1 : 1;
       }
       if (a[byAttribute] > b[byAttribute]) {

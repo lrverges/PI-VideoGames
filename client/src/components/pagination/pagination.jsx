@@ -20,6 +20,7 @@ export default function Pagination() {
     //ejecuta la funcion cuando comienza o actualiza el ciclo de vida del componente
     dispatch(getAllVideogames());
   }, [dispatch]);
+
   useEffect(() => {
     setFirstVG(currentPage * pageLimit);
     setShowVideogames(videogames.slice(firstVG, firstVG + pageLimit));

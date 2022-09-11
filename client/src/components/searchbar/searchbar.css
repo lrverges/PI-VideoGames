@@ -7,7 +7,7 @@
 
 .btnSearchBar{
     padding: 1px;
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50; 
     border: none;
     color: white;
     border-radius: 5%;
@@ -17,13 +17,18 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    -webkit-transition-duration: 0.4s; /* Safari */
+    -webkit-transition-duration: 0.4s; 
     transition-duration: 0.4s;
     text-shadow: 1px 1px 3px #666666;
 }
+.btnSearchBar::before{
+    background: #318aac;
+}
 
 .btnSearchBar:hover{
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50;
     color:yellow;
-  
-   }
+    transition: all 1s ease;
+   } 
+ 
+

@@ -2,7 +2,9 @@
     min-height: 100vh; /**/
     display: flex;
     flex-direction: row;
-    background-color: rgb(221, 215, 215);
+    background-color: rgb(253, 252, 252);
+    /* background-color: rgb(221, 215, 215); */
+    /* background-image: url('../../image/fondo.jpg'); */
     /* background-image: url('../../image/papel-arrugado.jpg'); */
     /* background-repeat: no-repeat; */
     /* background-size: cover; */

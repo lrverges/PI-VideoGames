@@ -39,6 +39,7 @@
   .btn_home:hover{
     background-color: #27c02f;
     border: solid #0b530f 2px;
+    cursor: pointer;
   }
   .btn_home::after{
     content: "";

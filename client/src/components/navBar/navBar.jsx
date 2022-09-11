@@ -8,14 +8,14 @@ import "./navBar.css";
 
 export default function NavBar() {
   const location = useLocation();
-  console.log(location.pathname);
+ 
   return (
     <div>
       <div className="containerNavBar">
         <div className="navBar">
           <section className="links">
             <NavLink to="/" className="navLink">
-              {" "}Start{" "}
+              Start
             </NavLink>
             <NavLink
               to="/home"
@@ -23,8 +23,7 @@ export default function NavBar() {
                 location.pathname === "/home" ? "navLink active" : "navLink"
               }
             >
-              {" "}
-              Home{" "}
+              Home
             </NavLink>
             <NavLink
               to="/create"
@@ -32,7 +31,7 @@ export default function NavBar() {
                 location.pathname === "/create" ? "navLink active" : "navLink"
               }
             >
-              {" "}Create{" "}
+              Create
             </NavLink>
             <NavLink
               to="/about"
@@ -40,7 +39,7 @@ export default function NavBar() {
                 location.pathname === "/about" ? "navLink active" : "navLink"
               }
             >
-              {" "}About{" "}
+              About
             </NavLink>
           </section>
           <section

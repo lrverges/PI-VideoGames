@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { filterBySource } from "../../store/actions";
-import './filterBySource.css'
+import "./filterBySource.css";
 import { ALL, API, CREATEDBYUSER } from "./constants";
 
 export default function FilterBySource() {
@@ -14,7 +14,8 @@ export default function FilterBySource() {
   return (
     <>
       {/* <span>Select Source </span> */}
-      <select className="inputFilterBySource"
+      <select
+        className="inputFilterBySource"
         name="selectSource"
         onChange={onSelectChange}
         defaultValue={filterSource}

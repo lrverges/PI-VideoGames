@@ -86,12 +86,12 @@ router.post('/', async (req, res, next)=>{
     }
 });
 
-router.put('/',(req, res, next)=>{
-    res.send('soy un put en /videogame')
-});
+// router.put('/',(req, res, next)=>{
+//     res.send('soy un put en /videogame')
+// });
 
-router.delete('/',(req, res, next)=>{
-    res.send('soy un delete en /videogame')
-});
+// router.delete('/',(req, res, next)=>{
+//     res.send('soy un delete en /videogame')
+// });
 
 module.exports = router;

@@ -15,12 +15,19 @@ export default function Searchbar() {
     e.preventDefault();
     setSearch(e.target.value);
   }
+  function onClickReset(e){
+    e.preventDefault();
+    setSearch("")
+    dispatch(getAllVideogames())
+    
+  }
 
   return (
     <div className='containerSearchbar'>
       <form onSubmit={onSubmit}>
         <input className="inputSearchBar" type="text" onChange={oninputChange} value={search} />
         <input className="btnSearchBar" type="submit" value="Search" />
+        <input className="btnSearchBar" type='button' value="Reset" onClick={onClickReset} />
       </form>
     </div>
   );
