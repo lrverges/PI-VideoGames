@@ -5,17 +5,29 @@ const path = require('path');
 const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DATABASE_URL
 } = process.env;
+
+let configSequelize = {
+  logging: false, // set to console.log to see the raw SQL queries
+  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+  
+}
 let url = ''
 if(DATABASE_URL){
 url = DATABASE_URL
+configSequelize.dialectOptions={
+  ssl:{
+    require:true,
+    rejectUnauthorized: false
+  }
+}
 }else{
 url = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`
+
+
 }
 
-const sequelize = new Sequelize(url, {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-});
+
+const sequelize = new Sequelize(url, configSequelize);
 const basename = path.basename(__filename); // obtiene el nombre db.js
 const modelDefiners = [];
 
